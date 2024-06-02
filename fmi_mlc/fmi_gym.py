@@ -13,7 +13,7 @@ try:
 except:
     root = os.getcwd()
 sys.path.append(root)
-from fmi_gym_parameter import get_default_parameter
+from fmi_mlc.fmi_gym_parameter import get_default_parameter
 
 class fmi_gym(gym.Env):
     '''Wrapper class for FMI-MLC'''
@@ -30,6 +30,7 @@ class fmi_gym(gym.Env):
         super(fmi_gym, self).__init__()
 
         # Setup
+        # self.parameter = parameter
         self.parameter = get_default_parameter()
         self.parameter.update(parameter)
         self.init = True
@@ -129,9 +130,7 @@ class fmi_gym(gym.Env):
         start_time (float): Start time of the model, in sceonds.
         '''
         # Load FMU
-        self.fmu = self.load_fmu(self.parameter['fmu_path'],
-                                 log_level=self.parameter['fmu_loglevel'],
-                                 kind=self.parameter['fmu_kind'])
+        self.fmu = self.load_fmu(self.parameter['fmu_path'])
 
         # Parameterize FMU
         param = self.parameter['fmu_param']
@@ -139,12 +138,9 @@ class fmi_gym(gym.Env):
         if param != {}:
             self.fmu.set(list(param.keys()), list(param.values()))
 
-        # Initizlaize FMU
-        self.fmu.setup_experiment(start_time=self.parameter['fmu_start_time'],
-                                  stop_time=self.parameter['fmu_final_time'],
-                                  stop_time_defined=False,
-                                  tolerance=self.parameter['fmu_tolerance'])
-        self.fmu.initialize()
+        # Initizlaize FMU       
+        self.fmu.initialize(start_time=self.parameter['fmu_start_time'],
+                            stop_time=self.parameter['fmu_final_time'])
         self.fmu_loaded = True
 
     def evaluate_fmu(self, inputs, advance_fmu=True):

@@ -7,3 +7,5 @@
 # build
 *.egg-info/*
 build/*
+EnergyPlusToFMU-v3.1.0
+FMI-Standard-3.0.1
