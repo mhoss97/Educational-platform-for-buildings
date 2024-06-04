@@ -10,7 +10,7 @@ Before you begin, ensure the following tools and packages are installed:
 - **Python 3.9 or higher**: Needed to run the scripts.
 - **Conda**: Recommended for managing Python libraries and environments.
 - **EnergyPlus**: Essential for building simulations.
-- **EnergyPlusToFMU**: Allows for generating FMU files from EnergyPlus models.
+
 
 ### Dependencies
 Use Conda and pip to install the required libraries. For complex dependencies like `pyfmi`, Conda Forge is recommended. Here are the commands to install all necessary dependencies:
