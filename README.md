@@ -44,3 +44,6 @@ NOTICE. This Software was developed under funding from the U.S. Department of En
 To cite the FMI-MLC package, please use:
 
 *Gehbauer, Christoph, Rippl, Andreas and Lee, Eleanor. 2021. Advanced Control of Dynamic Facades and HVAC with Reinforcement Learning based on standardized co-Simulation. Building Simulation 2021.*
+
+## Additional Documentation
+For more details about the running simulation and data handling, see the [additional README](README2.md).
